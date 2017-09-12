@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Customer {
@@ -20,7 +19,9 @@ public boolean reserveSeat(int seatID)
 		}
 		else
 		{
-			seats.
+			seats.get(seatID).setReserved(true);
+			System.out.println("Seat reserved");
+			return true;
 		}
 	}
 	else

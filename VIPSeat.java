@@ -1,7 +1,7 @@
 
 public class VIPSeat extends Seat{
 
-	VIPSeat(int id, boolean reserved, int planeID)
+	VIPSeat(Integer id, boolean reserved, Integer planeID)
 	{
 		this.id = id;
 		this.reserved = reserved;
