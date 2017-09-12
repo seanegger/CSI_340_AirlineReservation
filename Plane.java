@@ -1,10 +1,32 @@
+import java.util.ArrayList;
 
 public class Plane {
-	VIPSeat vipSeats[];
-	RegularSeat regularSeats[];
+	ArrayList<VIPSeat> vipSeats;
+	ArrayList<RegularSeat> regularSeats;
 	private int id;
 	AirPlaneCompany ownedBy;
 	Flight flights[];
+
+	public Plane()
+	{
+		Seat currentSeat;
+		for (int i = 0;  i < 20; i++)
+		{
+			if (i > 6)
+			{
+				//create regular seat
+				currentSeat = new RegularSeat(i, false, id);
+				regularSeats.add(currentSeat);
+			}
+			else
+			{
+				//create vip seat
+				currentSeat = new VIPSeat(i, false, id);
+				vipSeats.add(currentSeat);
+			}
+		}
+	}
+
 	public VIPSeat[] getVipSeats() {
 		return vipSeats;
 	}

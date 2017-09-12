@@ -3,6 +3,8 @@ public abstract class Seat {
 	int id;
 	boolean reserved;
 	int planeID;
+
+
 	public int getId() {
 		return id;
 	}
