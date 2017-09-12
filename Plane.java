@@ -1,8 +1,10 @@
 
 public class Plane {
-VIPSeat vipSeats[];
+VIPSeat vipSeats[];z
 RegularSeat regularSeats[];
 private int id;
+AirPlaneCompany ownedBy;
+Flight flights[];
 public VIPSeat[] getVipSeats() {
 	return vipSeats;
 }
@@ -27,5 +29,12 @@ public Flight[] getFlights() {
 public void setFlights(Flight[] flights) {
 	this.flights = flights;
 }
-Flight flights[];
+public AirPlaneCompany getOwnedBy()
+{
+	return this.ownedBy;
+}
+public setBelongsTo(AirPlaneCompany apc)
+{
+	this.ownedBy = apc;
+}
 }
