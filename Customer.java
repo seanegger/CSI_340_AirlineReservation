@@ -1,21 +1,31 @@
 import java.util.HashMap;
 
 public class Customer {
+
+	String fname;
+	String lname;
 	HashMap<Integer, Seat> seats;
 	Flight flights[];
 
+
+	public void setfName(String name) {
+		this.fname = name;
+	}
+	public void setlName(String name) {
+		this.lname = name;
+	}
 
 	/**
 	 * Prints out a customers flight itinerary which includes:
 	 * flght number, departure time, departure date, departure location,
 	 * destination, flight duration, seat number
 	 */
-	public void printItinerary(flightID) {
+	public void printItinerary(int flightID) {
 		Flight flight = flights[flightID];
-		string toPrint = "";
+		String toPrint = "";
 		toPrint += "Flight Number: " + flightID + "\n";
 		toPrint += "Origin: " + flight.getDeparturePlace() + "\t";
-		toPrint += "Date and Time: " + flight.getDepartureDate() + "\t";
+		toPrint += "Date and Time: " + flight.getDate() + "\t";
 		toPrint += flight.getDepartureTime() + "\n";
 		toPrint += "Destination: " + flight.getDestination() + "\t";
 		toPrint += "Duration: " + flight.getDuration() + "\t";
