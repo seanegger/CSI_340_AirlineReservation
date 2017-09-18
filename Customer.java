@@ -6,6 +6,11 @@ public class Customer {
 	String lname;
 	ArrayList<Reservation> reservations;
 
+	public Customer(String fname, String lname) {
+		this.fname = fname;
+		this.lname = lname;
+		this.reservations = new ArrayList<Reservation>();
+	}
 
 	public void setfName(String name) {
 		this.fname = name;

@@ -9,23 +9,27 @@ public class Plane {
 
 	public Plane()
 	{
+		vipSeats = new ArrayList<VIPSeat>();
+		regularSeats = new ArrayList<RegularSeat>();
 		//make some seats when you make the plane
-		Seat currentSeat;
-		for (int i = 0;  i < 20; i++)
-		{
-			if (i > 6)
-			{
-				//create regular seat
-				currentSeat = new RegularSeat(Integer.toString(i), this);
-				regularSeats.add((RegularSeat) currentSeat);
-			}
-			else
-			{
-				//create vip seat
-				currentSeat = new VIPSeat(Integer.toString(i), this);
-				vipSeats.add((VIPSeat) currentSeat);
-			}
-		}
+		VIPSeat seat = new VIPSeat("3", this);
+		vipSeats.add(seat);
+//		Seat currentSeat;
+//		for (int i = 0;  i < 20; i++)
+//		{
+//			if (i > 6)
+//			{
+//				//create regular seat
+//				currentSeat = new RegularSeat(Integer.toString(i), this);
+//				regularSeats.add((RegularSeat) currentSeat);
+//			}
+//			else
+//			{
+//				//create vip seat
+//				currentSeat = new VIPSeat(Integer.toString(i), this);
+//				vipSeats.add((VIPSeat) currentSeat);
+//			}
+//		}
 	}
 
 	public ArrayList<VIPSeat> getVipSeats() {
@@ -73,7 +77,7 @@ public class Plane {
 			if(seat == vipSeats.get(i).getId())
 				return vipSeats.get(i);
 		}
-		for (int i = 0; i < vipSeats.size(); i++)
+		for (int i = 0; i < regularSeats.size(); i++)
 		{
 			if(seat == regularSeats.get(i).getId())
 				return regularSeats.get(i);

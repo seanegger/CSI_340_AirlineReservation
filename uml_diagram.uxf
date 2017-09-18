@@ -5,14 +5,16 @@
     <id>UMLClass</id>
     <coordinates>
       <x>108</x>
-      <y>72</y>
+      <y>81</y>
       <w>189</w>
-      <h>63</h>
+      <h>90</h>
     </coordinates>
-    <panel_attributes>_Company_
+    <panel_attributes>_AirPlaneCompany_
 --
-#Planes[]
+#ArrayList&lt;Plane&gt; Planes
 -Name
+--
++addPlane(Plane)
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -20,41 +22,43 @@
     <id>UMLClass</id>
     <coordinates>
       <x>432</x>
-      <y>81</y>
+      <y>90</y>
       <w>189</w>
-      <h>126</h>
+      <h>135</h>
     </coordinates>
     <panel_attributes>_Plane_
 --
-int numSeats
-VIPSeat vipSeats[]
-regularSeat regSeats[]
-int id
-Flight flights[]
-</panel_attributes>
+-AirPlaneCompany ownedBy
+-int numSeats
+-List&lt;VIPSeat&gt; vipSeats
+-List&lt;regularSeat&gt; regSeats
+-int id
+-Flight flights[]
+--
++Seat getSeat(string)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>432</x>
-      <y>324</y>
+      <x>468</x>
+      <y>333</y>
       <w>189</w>
-      <h>216</h>
+      <h>198</h>
     </coordinates>
     <panel_attributes>_Flight_
 --
-string departure
-string destination
-int capacity
-float vipPrice
-float regPrice
-datetime date
-time departureTime
-time duration
-int planeID
---
-getSeatPrice()
+-string departurePlace
+-string destination
+-int flightCapacity
+-float vipPrice
+-float regPrice
+-datetime date
+-time departureTime
+-time duration
+-Plane plane
+-int flightID
+
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -62,29 +66,30 @@ getSeatPrice()
     <id>Relation</id>
     <coordinates>
       <x>288</x>
-      <y>90</y>
+      <y>99</y>
       <w>162</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-m1=0..n</panel_attributes>
+m1=1..n</panel_attributes>
     <additional_attributes>160.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
-      <y>324</y>
-      <w>189</w>
-      <h>99</h>
+      <x>18</x>
+      <y>333</y>
+      <w>207</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>_Customer_
 --
-seats[]
-flight
++string fname
++string lname
+-Reservation reservations[]
 --
-printItinerary()
-reserveSeat()
++void printItinerary()
++bool makeReservation(flight, seat)
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -92,86 +97,72 @@ reserveSeat()
     <id>UMLClass</id>
     <coordinates>
       <x>225</x>
-      <y>576</y>
+      <y>585</y>
       <w>189</w>
       <h>72</h>
     </coordinates>
     <panel_attributes>_Seat_
 --
-int id
-bool reserved
-int planeID</panel_attributes>
+-string id
+-bool reserved
+-Plane plane</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>387</x>
-      <y>702</y>
+      <y>711</y>
       <w>189</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>_RegularSeat_
 --
-int id
-bool reserved</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>63</x>
-      <y>702</y>
+      <y>711</y>
       <w>189</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>_VIPSeat_
 --
-int id
-bool reserved</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>477</x>
-      <y>198</y>
+      <x>513</x>
+      <y>216</y>
       <w>45</w>
-      <h>144</h>
+      <h>135</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1..n</panel_attributes>
-    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>414</y>
-      <w>144</w>
-      <h>180</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-m1=0..n</panel_attributes>
-    <additional_attributes>130.0;180.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>270</x>
-      <y>360</y>
-      <w>180</w>
+      <x>216</x>
+      <y>369</y>
+      <w>72</w>
       <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-m1=0..n</panel_attributes>
-    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+m1=1..n</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>405</x>
-      <y>144</y>
+      <y>153</y>
       <w>315</w>
       <h>495</h>
     </coordinates>
@@ -183,7 +174,7 @@ m1=1..n</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>396</x>
-      <y>639</y>
+      <y>648</y>
       <w>36</w>
       <h>81</h>
     </coordinates>
@@ -194,11 +185,49 @@ m1=1..n</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>225</x>
-      <y>639</y>
+      <y>648</y>
       <w>45</w>
       <h>81</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>30.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>324</y>
+      <w>135</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>_Reservation_
+--
+-Flight flight
+-Seat seat
+--
++void bookFlight()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>396</x>
+      <y>342</y>
+      <w>90</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>378</x>
+      <y>423</y>
+      <w>27</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;180.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

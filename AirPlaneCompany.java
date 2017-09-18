@@ -1,8 +1,13 @@
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class AirPlaneCompany {
 	String name;
-	HashMap<Integer, Plane> planeMap;
+	ArrayList<Plane> planes;
+
+	public AirPlaneCompany(String name) {
+		this.name = name;
+		this.planes = new ArrayList<Plane>();
+	}
 
 	public void setName(String name)
 	{
@@ -11,9 +16,9 @@ public class AirPlaneCompany {
 
 	public void addPlane(Plane plane)
 	{
-		if(this.planeMap.get(plane.getId())==null)
+		if(this.planes.contains(plane) == false)
 		{
-			this.planeMap.put(plane.getId(), plane);
+			this.planes.add(plane);
 			System.out.println("Plane Added to fleet");
 		}
 		else {
