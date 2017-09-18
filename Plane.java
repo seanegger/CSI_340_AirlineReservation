@@ -1,42 +1,43 @@
 import java.util.ArrayList;
 
 public class Plane {
-	ArrayList<VIPSeat> vipSeats;
-	ArrayList<RegularSeat> regularSeats;
+	private ArrayList<VIPSeat> vipSeats;
+	private ArrayList<RegularSeat> regularSeats;
 	private int id;
-	AirPlaneCompany ownedBy;
-	Flight flights[];
+	private AirPlaneCompany ownedBy;
+	private Flight flights[];
 
 	public Plane()
 	{
+		//make some seats when you make the plane
 		Seat currentSeat;
 		for (int i = 0;  i < 20; i++)
 		{
 			if (i > 6)
 			{
 				//create regular seat
-				currentSeat = new RegularSeat(i, false, id);
-				regularSeats.add(currentSeat);
+				currentSeat = new RegularSeat(Integer.toString(i), this);
+				regularSeats.add((RegularSeat) currentSeat);
 			}
 			else
 			{
 				//create vip seat
-				currentSeat = new VIPSeat(i, false, id);
-				vipSeats.add(currentSeat);
+				currentSeat = new VIPSeat(Integer.toString(i), this);
+				vipSeats.add((VIPSeat) currentSeat);
 			}
 		}
 	}
 
-	public VIPSeat[] getVipSeats() {
+	public ArrayList<VIPSeat> getVipSeats() {
 		return vipSeats;
 	}
-	public void setVipSeats(VIPSeat[] vipSeats) {
+	public void setVipSeats(ArrayList<VIPSeat> vipSeats) {
 		this.vipSeats = vipSeats;
 	}
-	public RegularSeat[] getRegularSeats() {
+	public ArrayList<RegularSeat> getRegularSeats() {
 		return regularSeats;
 	}
-	public void setRegularSeats(RegularSeat[] regularSeats) {
+	public void setRegularSeats(ArrayList<RegularSeat> regularSeats) {
 		this.regularSeats = regularSeats;
 	}
 	public int getId() {
@@ -58,5 +59,25 @@ public class Plane {
 	public void setBelongsTo(AirPlaneCompany apc)
 	{
 		this.ownedBy = apc;
+	}
+
+	/**
+	 * Find a seat by string name
+	 * @param seat the seat string
+	 * @return the seat
+	 */
+	public Seat getSeat(String seat)
+	{
+		for (int i = 0; i < vipSeats.size(); i++)
+		{
+			if(seat == vipSeats.get(i).getId())
+				return vipSeats.get(i);
+		}
+		for (int i = 0; i < vipSeats.size(); i++)
+		{
+			if(seat == regularSeats.get(i).getId())
+				return regularSeats.get(i);
+		}
+		return null;
 	}
 }

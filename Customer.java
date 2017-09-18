@@ -1,11 +1,10 @@
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Customer {
 
 	String fname;
 	String lname;
-	HashMap<Integer, Seat> seats;
-	Flight flights[];
+	ArrayList<Reservation> reservations;
 
 
 	public void setfName(String name) {
@@ -20,44 +19,36 @@ public class Customer {
 	 * flght number, departure time, departure date, departure location,
 	 * destination, flight duration, seat number
 	 */
-	public void printItinerary(int flightID) {
-		Flight flight = flights[flightID];
-		String toPrint = "";
-		toPrint += "Flight Number: " + flightID + "\n";
-		toPrint += "Origin: " + flight.getDeparturePlace() + "\t";
-		toPrint += "Date and Time: " + flight.getDate() + "\t";
-		toPrint += flight.getDepartureTime() + "\n";
-		toPrint += "Destination: " + flight.getDestination() + "\t";
-		toPrint += "Duration: " + flight.getDuration() + "\t";
-		toPrint += "Seat: " + seats.get(flight.getPlaneID()) + "\t";
+	public void printItinerary() {
+		for (int i = 0; i < reservations.size(); i++)
+		{
+			reservations.get(i).toString();
+		}
 	}
 
-	/**
-	 *
-	 * @param seatID
-	 * @return
-	 */
-	public boolean reserveSeat(int seatID)
-	{
-		if(seats.get(seatID)!=null)
-		{
-			if(seats.get(seatID).isReserved())
-			{
-				System.out.println("Seat is already reserved");
-				return false;
-			}
-			else
-			{
-				seats.get(seatID).setReserved(true);
-				System.out.println("Seat reserved");
-				return true;
-			}
-		}
-		else
-		{
-			System.out.println("No Such Seat Exists");
-			return false;
 
+	/**
+	 * Checks if the given seat is available on a flight and makes a
+	 * reservation if the seat is not reserved
+	 * @param flight The flight the seat is on
+	 * @param seat The seat being reserved
+	 * @return True if successfully booked, false otherwise.
+	 */
+	public boolean makeReservation(Flight flight, String seat) {
+		//check if seat exists and is unreserved
+		Seat x = flight.getPlane().getSeat(seat);
+		if (x == null) {
+			System.out.println("Seat not found");
+			return false;
 		}
+		if (x.isReserved() == true) {
+			System.out.println("Seat already reserved");
+			return false;
+		}
+		Reservation y = new Reservation(flight, seat, this);
+		reservations.add(y);
+		y.bookFlight();
+		System.out.println("Reservation made");
+		return true;
 	}
 }

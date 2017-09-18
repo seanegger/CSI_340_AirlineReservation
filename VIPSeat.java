@@ -1,10 +1,8 @@
 
 public class VIPSeat extends Seat{
 
-	VIPSeat(Integer id, boolean reserved, Integer planeID)
+	public VIPSeat(String id, Plane plane)
 	{
-		this.id = id;
-		this.reserved = reserved;
-		this.planeID = planeID;
+		super(id, plane);
 	}
 }

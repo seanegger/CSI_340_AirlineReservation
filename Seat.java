@@ -1,14 +1,20 @@
 
 public abstract class Seat {
-	int id;
-	boolean reserved;
-	int planeID;
+	private String id;
+	private boolean reserved;
+	private Plane plane;
 
+	public Seat(String id, Plane plane)
+	{
+		this.setId(id);
+		this.setReserved(false);
+		this.setPlane(plane);
+	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public boolean isReserved() {
@@ -17,10 +23,10 @@ public abstract class Seat {
 	public void setReserved(boolean reserved) {
 		this.reserved = reserved;
 	}
-	public int getPlaneID() {
-		return planeID;
+	public Plane getPlane() {
+		return plane;
 	}
-	public void setPlaneID(int planeID) {
-		this.planeID = planeID;
+	public void setPlane(Plane plane) {
+		this.plane = plane;
 	}
 }

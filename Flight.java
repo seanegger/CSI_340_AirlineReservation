@@ -1,14 +1,22 @@
 
 public class Flight {
-	String departurePlace;
-	String destination;
-	int flightCapacity;
-	float vipPrice;
-	float regularPrice;
-	String date;
-	String departureTime;
-	String duration;
-	int planeID;
+	private String departurePlace;
+	private String destination;
+	private int flightCapacity;
+	private float vipPrice;
+	private float regularPrice;
+	private String date;
+	private String departureTime;
+	private String duration;
+	private Plane plane;
+	private int flightID;
+
+	public int getFlightID() {
+		return flightID;
+	}
+	public void setFlightID(int flightID) {
+		this.flightID = flightID;
+	}
 	public String getDeparturePlace() {
 		return departurePlace;
 	}
@@ -57,10 +65,10 @@ public class Flight {
 	public void setDuration(String duration) {
 		this.duration = duration;
 	}
-	public int getPlaneID() {
-		return planeID;
+	public Plane getPlane() {
+		return plane;
 	}
-	public void setPlaneID(int planeID) {
-		this.planeID = planeID;
+	public void setPlane(Plane plane) {
+		this.plane = plane;
 	}
 }
