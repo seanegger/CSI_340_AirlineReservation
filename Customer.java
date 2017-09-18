@@ -27,7 +27,7 @@ public class Customer {
 	public void printItinerary() {
 		for (int i = 0; i < reservations.size(); i++)
 		{
-			reservations.get(i).toString();
+			System.out.print(reservations.get(i).toString());
 		}
 	}
 
@@ -46,7 +46,7 @@ public class Customer {
 			System.out.println("Seat not found");
 			return false;
 		}
-		if (x.isReserved() == true) {
+		if (flight.isSeatReserved(seat) == true) {
 			System.out.println("Seat already reserved");
 			return false;
 		}

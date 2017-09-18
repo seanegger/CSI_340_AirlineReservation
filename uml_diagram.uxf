@@ -14,7 +14,7 @@
 #ArrayList&lt;Plane&gt; Planes
 -Name
 --
-+addPlane(Plane)
++void addPlane(Plane)
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -43,8 +43,8 @@
     <coordinates>
       <x>468</x>
       <y>333</y>
-      <w>189</w>
-      <h>198</h>
+      <w>198</w>
+      <h>234</h>
     </coordinates>
     <panel_attributes>_Flight_
 --
@@ -58,6 +58,11 @@
 -time duration
 -Plane plane
 -int flightID
+-map&lt;int,bool&gt; seatMap
+--
++boolean isSeatReserved(string)
++ void reserveSeat(string)
+
 
 </panel_attributes>
     <additional_attributes/>
@@ -104,7 +109,6 @@ m1=1..n</panel_attributes>
     <panel_attributes>_Seat_
 --
 -string id
--bool reserved
 -Plane plane</panel_attributes>
     <additional_attributes/>
   </element>

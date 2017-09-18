@@ -14,6 +14,10 @@ public class Plane {
 		//make some seats when you make the plane
 		VIPSeat seat = new VIPSeat("3", this);
 		vipSeats.add(seat);
+		seat = new VIPSeat("4", this);
+		vipSeats.add(seat);
+		RegularSeat seatr = new RegularSeat("5", this);
+		regularSeats.add(seatr);
 //		Seat currentSeat;
 //		for (int i = 0;  i < 20; i++)
 //		{

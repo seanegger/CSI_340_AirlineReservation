@@ -16,7 +16,7 @@ public class Reservation {
 
     public void bookFlight()
     {
-        seat.setReserved(true);
+        flight.reserveSeat(seat.getId());
     }
 
     @Override
@@ -30,7 +30,8 @@ public class Reservation {
         toPrint += "Destination: " + flight.getDestination() + "\t";
         toPrint += "Duration: " + flight.getDuration() + "\t";
         toPrint += "Seat: " + seat.getId() + "\n";
-        toPrint = "----------------------------------------\n";
+        toPrint += "Carrier: " + flight.getPlane().getOwnedBy().name + "\n";
+        toPrint += "----------------------------------------\n";
         return toPrint;
     }
 }

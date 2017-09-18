@@ -1,3 +1,9 @@
+import com.sun.org.apache.regexp.internal.RE;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class Flight {
 	private String departurePlace;
@@ -10,6 +16,8 @@ public class Flight {
 	private String duration;
 	private Plane plane;
 	private int flightID;
+	private Map<String, Boolean> seatReservationMap;
+
 
 	public int getFlightID() {
 		return flightID;
@@ -70,5 +78,26 @@ public class Flight {
 	}
 	public void setPlane(Plane plane) {
 		this.plane = plane;
+		//add map keeping track of which seat is reserved
+		this.seatReservationMap = new Hashtable<String, Boolean>();
+		ArrayList<VIPSeat> vseats = plane.getVipSeats();
+		for(int i = 0; i < vseats.size(); i++)
+		{
+			this.seatReservationMap.put(vseats.get(i).getId(), false);
+		}
+		ArrayList<RegularSeat> rseats = plane.getRegularSeats();
+		for(int i = 0; i < rseats.size(); i++)
+		{
+			this.seatReservationMap.put(rseats.get(i).getId(), false);
+		}
+	}
+
+	public boolean isSeatReserved(String seatID)
+	{
+		return seatReservationMap.get(seatID);
+	}
+	public void reserveSeat(String seatID)
+	{
+		seatReservationMap.put(seatID, true);
 	}
 }
